@@ -39,11 +39,11 @@ fetch(`${API_URL}/`)
 .catch(err => {
   gridProducts.innerHTML= 
   `<div class="alert alert-danger" role="alert">
-  <h4 class="alert-heading">Atention!</h4>
-  <p>Ooops!, je ne trouve pas la page</p>
+  <h4 class="alert-heading">Ooops!</h4>
+  <p>Je ne trouve pas la page</p>
   <hr>
   <p class="mb-0">Recommencer</p>
-  </div>`;  
+  </div>` 
 });
 
 

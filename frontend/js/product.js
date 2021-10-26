@@ -1,6 +1,8 @@
 // Url de l'API//
 
 const API_URL = "http://localhost:3000/api/cameras";
+const productContainer= document.querySelector(".productDetail");
+console.log(productContainer)
 
 // Je récupère mon url//
 let currentUrl = window.location.search;
@@ -51,7 +53,13 @@ fetch(`${API_URL}/${id}`)
 
     })
     .catch(err => {
-        console.log(err)
+        productContainer.innerHTML= 
+        `<div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Ooops!</h4>
+        <p>Je ne trouve pas la page</p>
+        <hr>
+        <p class="mb-0">Recommencer</p>
+        </div>`
     });
 
 

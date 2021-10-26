@@ -5,7 +5,6 @@ const cartContainer= document.getElementById("tbody");
 
 
 let cart= getAllObjects();
-console.log(cart);
 
 function renderCart(cart){
 
@@ -22,7 +21,7 @@ cart.forEach(product => {
                         </div>
                     </div>
                 </th>
-                <td class="border-0 align-middle"><strong>${product.price}</strong></td>
+                <td class="border-0 align-middle"><strong class="price">${product.price}</strong></td>
                 <td class="border-0 align-middle">                                         
                     <input type="number" class="inputQuantityCart" name="itemQuantity" min="1" max="100" value="${product.quantity}">                    
                 </td>
@@ -45,21 +44,61 @@ inputs.forEach(input => {
 function modifyInput(e){
     const inputElement= e.target
     const closestElement= inputElement.closest(".myProduct")
-    const idProductInCart = closestElement.dataset.id  
-    const lenseProductInCart = closestElement.querySelector(".lenses").textContent
+    const idProduct = closestElement.dataset.id  
+    const lenseProduct = closestElement.querySelector(".lenses").textContent       
 
     cart.forEach(product =>{        
-        if(product.id === idProductInCart && product.lenses === lenseProductInCart ){ //ici je compare l'id mais aussi le choix de lense//
-            product.quantity = parseInt(inputElement.value)
+        if(product.id === idProduct && product.lenses === lenseProduct ){ //ici je compare l'id mais aussi le choix de lense//
+            product.quantity = parseInt(inputElement.value)         
         }
     })  
-
+    sumCart()
     saveArticles(cart)
     console.log(cart) 
       
 };
 
 
+//Somme d'éléments dans le panier//
+function sumCart(){
+const subTotal= document.querySelector(".subTotalPrice")
+const Total= document.querySelector(".TotalPrice")
+
+let sum = 0;
+    cart.forEach(product=>{
+       let sumItems =  product.price*product.quantity 
+       sum = sum + sumItems       
+    })
+
+    subTotal.innerHTML=`${sum}€`
+    Total.innerHTML=`${sum}€`
+}
+sumCart()
+
+
+
+// Supprimer elements dans le panier//
+
+const allTrash= cartContainer.querySelectorAll(".fa-trash")
+
+allTrash.forEach(trash =>{
+    trash.addEventListener('click', removeProduct)
+})
+
+function removeProduct(e){
+    const trash= e.target;
+    const closestElement= trash.closest(".myProduct")
+    const idProduct = closestElement.dataset.id  
+    console.log(trash)
+    for(let i=0; i<cart.length ; i++){
+        if(cart[i].id===idProduct){
+            cart.splice(i,1)
+        }              
+     }
+     console.log(cart)
+     closestElement.remove()
+     saveArticles(cart)
+};
 
 
 
