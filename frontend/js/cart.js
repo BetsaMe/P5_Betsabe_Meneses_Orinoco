@@ -2,8 +2,6 @@
 
 const cartContainer= document.getElementById("tbody");
 
-
-
 let cart= getAllObjects();
 
 function renderCart(cart){
@@ -99,6 +97,74 @@ function removeProduct(e){
      closestElement.remove()
      saveArticles(cart)
 };
+
+
+// Vérification de formulaire//
+let alertEmail= document.createElement("p");
+document.querySelector(".inputEmail").appendChild(alertEmail);
+
+
+const inputEmail= document.querySelector("#form6Example5")
+
+inputEmail.addEventListener("input", function(e){
+    const validFormat= /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+    if (validFormat.test(e.target.value))
+  {
+    isValid = true;
+    alertEmail.innerText= "adresse e-mail valide";
+    alertEmail.setAttribute("class", "text-success");
+    
+  }else{
+    isValid = false;
+    alertEmail.innerText= "L'adresse e-mail doit être indiquée dans un format approprié.";
+    alertEmail.setAttribute("class", "text-danger");
+  }
+    
+});
+
+
+
+
+
+
+// Envoyer données du formulaire//
+const formContact= document.getElementById("formContact");
+formContact.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    fetch("http://localhost:3000/api/cameras/order", {
+   
+    method: "POST",
+    headers: {
+        'Accept': 'application/json', 
+        'Content-Type': 'application/json'
+    },
+     
+    body: JSON.stringify({
+        name: document.getElementById("form6Example1").value})
+    })
+    .then(function(res) {
+        if (res.ok) {
+        return res.json()        
+        }
+      })
+    .then(function(value) {        
+    console.log(value) 
+    })
+    .catch(function(err) {
+    console.log(err)
+    }); 
+
+});
+
+
+
+
+
+
+
+
 
 
 
