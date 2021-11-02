@@ -1,6 +1,6 @@
 //Affichage de produits sur la page panier//
 
-const cartContainer= document.getElementById("tbody");
+const cartContainer= document.querySelector("tbody");
 
 let cart= getAllObjects();
 
@@ -8,24 +8,22 @@ function renderCart(cart){
 
 let content="";
 cart.forEach(product => {
-
             content += `<tr class="myProduct" data-id=${product.id}>
-                <th scope="row" class="border-0">
-                    <div class="p-2">
-                        <img src="${product.image}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                <td scope="row" class="border-0 nameColumn">
+                    <div>
+                        <img src="${product.image}" alt="" width="120" class="img-fluid rounded shadow-sm">
                         <div class="ml-3 d-inline-block align-middle">
                             <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle titleUnique">${product.name}</a></h5>
-                            <span class="text-muted font-weight-normal font-italic d-block">Objectif:<span class="lenses">${product.lenses}</span></span>
+                            <span class="text-muted d-block">Objectif:<span class="lenses">${product.lenses}</span></span>
                         </div>
                     </div>
-                </th>
-                <td class="border-0 align-middle"><strong class="price">${product.price}</strong></td>
-                <td class="border-0 align-middle">                                         
+                </td>
+                <td class="border-0 align-middle priceColumn"><strong class="price">${product.price}€</strong></td>
+                <td class="border-0 align-middle priceColumn">                                         
                     <input type="number" class="inputQuantityCart" name="itemQuantity" min="1" max="100" value="${product.quantity}">                    
                 </td>
-                <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-            </tr>`            
-            
+                <td class="border-0 align-middle trashColumn"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+            </tr>`  
         })
         cartContainer.innerHTML= content; 
 };
@@ -36,13 +34,13 @@ renderCart(cart);
 const inputs = cartContainer.querySelectorAll('.inputQuantityCart');
 
 inputs.forEach(input => {
-    input.addEventListener('change', modifyInput)
+    input.addEventListener('change', modifyInput);
 })
 
 function modifyInput(e){
-    const inputElement= e.target
+    const inputElement= e.target;
     const closestElement= inputElement.closest(".myProduct")
-    const idProduct = closestElement.dataset.id  
+    const idProduct = closestElement.dataset.id
     const lenseProduct = closestElement.querySelector(".lenses").textContent       
 
     cart.forEach(product =>{        
@@ -52,8 +50,7 @@ function modifyInput(e){
     })  
     sumCart()
     saveArticles(cart)
-    console.log(cart) 
-      
+    console.log(cart)       
 };
 
 
@@ -65,7 +62,7 @@ const Total= document.querySelector(".TotalPrice")
 let sum = 0;
     cart.forEach(product=>{
        let sumItems =  product.price*product.quantity 
-       sum = sum + sumItems       
+       sum += sumItems       
     })
 
     subTotal.innerHTML=`${sum}€`
@@ -77,24 +74,24 @@ sumCart()
 
 // Supprimer elements dans le panier//
 
-const allTrash= cartContainer.querySelectorAll(".fa-trash")
+const allDeleteButtons= cartContainer.querySelectorAll(".fa-trash")
 
-allTrash.forEach(trash =>{
-    trash.addEventListener('click', removeProduct)
+allDeleteButtons.forEach(deleteButton =>{
+    deleteButton.addEventListener('click', removeProduct)
 })
 
 function removeProduct(e){
     const trash= e.target;
     const closestElement= trash.closest(".myProduct")
-    const idProduct = closestElement.dataset.id  
-    console.log(trash)
+    const idProduct = closestElement.dataset.id 
+    
+
     for(let i=0; i<cart.length ; i++){
         if(cart[i].id===idProduct){
             cart.splice(i,1)
         }              
      }
      console.log(cart)
-     closestElement.remove()
      saveArticles(cart)
 };
 
@@ -104,58 +101,66 @@ let alertEmail= document.createElement("p");
 document.querySelector(".inputEmail").appendChild(alertEmail);
 
 
-const inputEmail= document.querySelector("#form6Example5")
+const inputEmail= document.querySelector("#form6Example5");
 
 inputEmail.addEventListener("input", function(e){
     const validFormat= /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
     if (validFormat.test(e.target.value))
-  {
-    isValid = true;
+  {    
     alertEmail.innerText= "adresse e-mail valide";
     alertEmail.setAttribute("class", "text-success");
     
-  }else{
-    isValid = false;
+  }else{    
     alertEmail.innerText= "L'adresse e-mail doit être indiquée dans un format approprié.";
     alertEmail.setAttribute("class", "text-danger");
-  }
-    
+  }    
 });
 
 
-
-
-
-
 // Envoyer données du formulaire//
-const formContact= document.getElementById("formContact");
-formContact.addEventListener("submit", function(e){
+const myForm= document.getElementById("formContact");
 
+myForm.addEventListener("submit", function(e){   
+    
     e.preventDefault();
+    const contact={
+        firstName: document.getElementById("form6Example1").value,
+        lastName: document.getElementById("form6Example2").value,
+        address: document.getElementById("form6Example3").value,
+        city: document.getElementById("form6Example4").value,
+        email: document.getElementById("form6Example5").value
+    }
+    
+    const products=[];
 
+    cart.forEach((productInCart) =>{
+        let idProduct=productInCart.id;
+        products.push(idProduct);
+    });
+    console.log(products)
     fetch("http://localhost:3000/api/cameras/order", {
-   
+    
     method: "POST",
     headers: {
         'Accept': 'application/json', 
         'Content-Type': 'application/json'
     },
-     
-    body: JSON.stringify({
-        name: document.getElementById("form6Example1").value})
+    body: JSON.stringify({contact, products})
+    
     })
-    .then(function(res) {
+    .then(function(res){
+        console.log(res)
         if (res.ok) {
         return res.json()        
         }
-      })
-    .then(function(value) {        
-    console.log(value) 
     })
+    .then(function(response) {
+        let url= "confirmation.html?id="
+        window.location.href = url + response.orderId;
+    })    
     .catch(function(err) {
     console.log(err)
     }); 
-
 });
 
 

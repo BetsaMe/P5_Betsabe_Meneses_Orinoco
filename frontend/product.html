@@ -8,7 +8,6 @@
     <!-- css styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="product.css">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -26,10 +25,10 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <form class="form-inline my-2 my-lg-0 mr-auto">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                        <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                       </form>
                     <ul class="navbar-nav  mt-2 mt-lg-0 ">
-                      <li class="nav-item active"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
+                      <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
                       <li class="nav-item"><a class="nav-link" href="cart.html">Panier</a></li>
                     </ul>                    
                 </div>
@@ -43,7 +42,7 @@
                 <div class="productImage"></div>
                 <div class="productBg">
                     <h1 class="productName"></h1>                    
-                    <p >Prix :<span class="productPrice"></span>€</p>
+                    <p class="productPriceStyle">Prix:&nbsp&nbsp<span class="productPrice"></span>&nbsp€</p>
                     
                     <ul class="list-inline small">
                         <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
@@ -52,18 +51,18 @@
                         <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
                         <li class="list-inline-item m-0"><i class="fas fa-star-half-alt starReview"></i></li>
                     </ul>
-                   
+                    <h6>Description</h6>
                     <p class="productDescription"></p>
-                    <label for="options">Tes choix :</label>
+                    <label for="options">Options:</label>
                     <select name="options" id="options">
-                            <option value=""  ></option>
+                            <option value=""></option>
                     </select>
                    
-                    <div class="">
-                        <label for="itemQuantity">Nombre d'article(s) (1-100) :</label>
+                    <div class="quantityStyle">
+                        <label for="itemQuantity">Quantité:</label>
                         <input type="number" name="itemQuantity" min="1" max="100" value="1" id="quantity">
                     </div>
-                    <button class="btn-dark btn-cart" id="addToCart">Ajouter au panier</button>
+                    <button type="button" class="btn btn-dark rounded-pill" id="addToCart">Ajouter au panier</button>
                     
                 </div> 
             </article>      
@@ -73,9 +72,8 @@
 
     <footer>
         <div class="container-fluid">
-            <div class="blocFooter">
-                <img src="images/logoOrinoco-03.svg" alt="logo Oricam">
-                <p>Appareil photo vintage</p>
+            <div class="firstBlocFooter">
+                <img src="images/logoOrinoco-03.svg" alt="logo Oricam">                
             </div>
             <div class="blocFooter">
                 <h3>Acheter</h3>
@@ -85,16 +83,17 @@
             <div class="blocFooter">
                 <h3>A Propos</h3>
                 <a href="">Presse</a>
-                <a href="">Conditions générales de vente</a>                
+                <a href="">Conditions de vente</a>
+                
             </div>
             <div class="blocFooter">
                 <h3>Aide</h3>
                 <a href="">Centre d'aide</a>
                 <a href="">Paramètres de confidentialité</a>
             </div>
-        </div>
-    
+        </div>    
     </footer>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

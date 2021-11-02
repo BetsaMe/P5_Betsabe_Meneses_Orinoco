@@ -8,28 +8,32 @@ fetch(`${API_URL}/`)
 .then(data => {
     if(data.ok){
       return data.json()
-  }
+    }else{
+      throw new Error(`Erreur HTTP ! statut : ${data.status}`)
+    }
 })
 .then(jsonListProducts => {
 
       let cards ="";
       jsonListProducts.forEach(product => {
         cards += `<div class="col-12 col-md-6 col-lg-4 cardContainer">
-                          <div class="card cardIndex">
-                            <a href="product.html?id=${product._id}">
+                          <div class="card cardIndex">                            
                               <img class="card-img-top" src="${product.imageUrl}" alt="Card image cap"width="250">
                               <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
                                 <p class="card-price">${product.price}&nbsp<span>€</span></p>
-                                <ul class="list-inline small">
-                                  <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
-                                  <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
-                                  <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
-                                  <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
-                                  <li class="list-inline-item m-0"><i class="fas fa-star-half-alt starReview"></i></li>
-                                </ul>
-                              </div>
-                            </a>
+                                <div class="lastBloc">
+                                  <ul class="list-inline small">
+                                    <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fas fa-star-half-alt starReview"></i></li>
+                                    <li class="list-inline-item m-0"><i class="fas fa-star-half-alt starReview"></i></li>
+                                  </ul>
+                                  <a href="product.html?id=${product._id}" class="btn btn-outline-dark my-2 my-sm-0 buttonIndex" role="button">Détails</a>
+                                </div>
+                              </div>                            
                           </div>
                   </div>`;
         });
@@ -39,11 +43,12 @@ fetch(`${API_URL}/`)
 .catch(err => {
   gridProducts.innerHTML= 
   `<div class="alert alert-danger mx-auto role="alert">
-    <h4 class="alert-heading">Ooops!</h4>
+    <h4 class="alert-heading">Ooops! il y a eu un problème</h4>
     <hr>
-    <p>Je ne trouve pas les articles</p>    
+    <p>${err.message}</p>    
   </div>` 
 });
+
 
 
 

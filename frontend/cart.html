@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
 </head>
 <body>   
   <header >
@@ -23,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <form class="form-inline my-2 my-lg-0 mr-auto">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                   </form>
                 <ul class="navbar-nav  mt-2 mt-lg-0 ">
                   <li class="nav-item active"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
@@ -34,41 +36,25 @@
     </nav>       
   </header>       
 
-    <main>
-        <div class="px-4 px-lg-0">
+    <main>      
+            <div class="container-fluid py-5 text-center">
+              <h1 class="display-4 titleCart">Ton panier</h1>
+              <hr class="gradientLine mx-auto">
+            </div>  
             
-            <div class="container text-white py-5 text-center">
-              <h1 class="display-4 titleYourCart">Ton panier</h1>
-            </div>
-            
-          
-            <div class="pb-5">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-          
+            <div class="container-fluid">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-lg-10 p-4 bg-white rounded shadow-sm mb-5 "> 
+
                     <!-- Shopping cart table -->
                     <div class="table-responsive">
                       <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col" class="rounded-left border-0 bg-light">
-                              <div class="p-2 px-3 text-uppercase">Produit</div>
-                            </th>
-                            <th scope="col" class="border-0 bg-light">
-                              <div class="py-2 text-uppercase">Prix Unitaire</div>
-                            </th>
-                            <th scope="col" class="border-0 bg-light">
-                              <div class="py-2 text-uppercase">Quantité</div>
-                            </th>
-                            <th scope="col" class="rounded-right border-0 bg-light">
-                              <div class="py-2 text-uppercase">Supprimer</div>
-                            </th>
-                          </tr>
+                        <thead>  
+                              <div class="p-2 px-4 py-3 mb-3 text-uppercase rounded-left border-0 bg-light tableTitle">Tes produits</div>
                         </thead>
-                        <tbody id="tbody">
-                          <!-- <tr>
-                            <th scope="row" class="border-0">
+                        <tbody>
+                          <tr>
+                            <th scope="row" class="border-0 nameColumn">
                               <div class="p-2">
                                 <img src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
                                 <div class="ml-3 d-inline-block align-middle">
@@ -76,58 +62,60 @@
                                 </div>
                               </div>
                             </th>
-                            <td class="border-0 align-middle"><strong>$79.00</strong></td>
-                            <td class="border-0 align-middle"><strong>3</strong></td>
-                            <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                          </tr> -->                     
+                            <td class="border-0 align-middle priceColumn"><strong>$79.00</strong></td>
+                            <td class="border-0 align-middle priceColumn"><strong>3</strong></td>
+                            <td class="border-0 align-middle deleteColumn"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                          </tr>                     
                         </tbody>
                       </table>
                     </div>
-                    <!-- End -->
+
                   </div>
                 </div>
-          
-                <div class="row py-5 p-4 bg-white rounded shadow-sm mb-5">
-                  <div class="col-lg-6">
-                    <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Code promotionnel </div>
-                    <div class="p-4">
-                      <p class="font-italic mb-4">Si vous disposez d'un code promotionnel, veuillez le saisir dans la case ci-dessous</p>
-                      <div class="input-group mb-4 border rounded-pill p-2">
-                        <input type="text" placeholder="Ajouter un code" aria-describedby="button-addon3" class="form-control border-0">
-                        <div class="input-group-append border-0">
-                          <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Ajouter un code</button>
-                        </div>
+              <!-- End -->
+              <!-- End -->
+              <div class="row d-flex justify-content-center">                
+                <div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
+                  <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Code promotionnel </div>
+                  <div class="p-4">
+                    <p class="font-italic mb-5">Si vous disposez d'un code promotionnel, veuillez le saisir dans la case ci-dessous</p>
+                    <div class="input-group mb-4 border rounded-pill p-2">
+                      <input type="text" placeholder="Ajouter un code" aria-describedby="button-addon3" class="form-control border-0">
+                      <div class="input-group-append border-0">
+                        <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Ajouter un code</button>
                       </div>
-                    </div>                
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Récapitulatif</div>
-                    <div class="p-4">
-                      <ul class="list-unstyled mb-4">
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sous-total</strong><strong class="subTotalPrice">390.00</strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Livraison</strong><strong>Gratuite</strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                          <h5 class="font-weight-bold TotalPrice">400.00</h5>
-                        </li>
-                      <!-- </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a> -->
                     </div>
+                  </div>                
+                </div>
+                <div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
+                  <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Récapitulatif</div>
+                  <div class="p-4">
+                    <ul class="list-unstyled mb-4">
+                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sous-total</strong><strong class="subTotalPrice">390.00</strong></li>
+                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Livraison</strong><strong>Gratuite</strong></li>
+                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                        <h5 class="font-weight-bold TotalPrice">400.00</h5>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <!-- formulaire -->
-                <h2>Tes coordonnées</h2>  
-                <div class="row py-5 p-4 bg-white rounded shadow-sm mb-5">                                 
-                  <form class="col-lg-8 mx-auto" id="formContact">
+              </div>
+              <!-- formulaire -->  
+              <div class="">
+                <div class="row">                                           
+                  <form class="col-lg-7 mx-auto bg-white rounded shadow-sm mb-5 p-4 " id="formContact">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold mb-4">Tes coordonnées</div>                    
                     <div class="row mb-4">
                       <div class="col">
                         <div class="form-outline">
-                          <input type="text" id="form6Example1" class="form-control"/>
+                          <input type="text" id="form6Example1" class="form-control" required/>
                           <label class="form-label" for="form6Example1">Prenom</label>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-outline">
-                          <input type="text" id="form6Example2" class="form-control"/>
+                          <input type="text" id="form6Example2" class="form-control" required/>
                           <label class="form-label" for="form6Example2">Nom</label>
                         </div>
                       </div>
@@ -135,69 +123,68 @@
                   
                     <!-- Text input -->
                     <div class="form-outline mb-4">
-                      <input type="text" id="form6Example3" class="form-control"/>
+                      <input type="text" id="form6Example3" class="form-control" required/>
                       <label class="form-label" for="form6Example4">Address</label>
                     </div>
 
                     <!-- Text input -->
                     <div class="form-outline mb-4">
-                      <input type="text" id="form6Example4" class="form-control"/>
+                      <input type="text" id="form6Example4" class="form-control" required/>
                       <label class="form-label" for="form6Example4">Ville</label>
                     </div>
                   
                     <!-- Email input -->
                     <div class="form-outline mb-4 inputEmail">
-                      <input type="email" id="form6Example5" class="form-control"/>
-                      <label class="form-label" for="form6Example5">Email</label>
+                      <input type="email" id="form6Example5" class="form-control" required/>
+                      <label class="form-label" for="form6Example5">E-mail</label>
                     </div>   
                     
                     <!-- Message input -->
                     <div class="form-outline mb-4">
                       <textarea maxlength="250" class="form-control" id="form6Example6" rows="4"></textarea>
-                      <label class="form-label" for="form6Example7">Additional information</label>
+                      <label class="form-label" for="form6Example7">Information additionnelle</label>
                     </div>                  
                   
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-dark rounded-pill py-2 btn-block">Commander</button>
                   </form>
-                </div>
-          
+               </div>
               </div>
-            </div>
-          </div>    
+            </div> 
+            <!-- End container-fluid-->
     </main>
     
-
     <footer>
-        <div class="container-fluid">
-            <div class="blocFooter">
-                <img src="images/logoOrinoco-03.svg" alt="logo Oricam">
-                <p>Appareil photo vintage</p>
-            </div>
-            <div class="blocFooter">
-                <h3>Acheter</h3>
-                <a href="">Cartes cadeaux</a>
-                <a href="">Plan du site</a>
-            </div>
-            <div class="blocFooter">
-                <h3>A Propos</h3>
-                <a href="">Presse</a>
-                <a href="">Conditions générales de vente</a>                
-            </div>
-            <div class="blocFooter">
-                <h3>Aide</h3>
-                <a href="">Centre d'aide</a>
-                <a href="">Paramètres de confidentialité</a>
-            </div>
-        </div>
-    
-    </footer>
+      <div class="container-fluid">
+          <div class="firstBlocFooter">
+              <img src="images/logoOrinoco-03.svg" alt="logo Oricam">                
+          </div>
+          <div class="blocFooter">
+              <h3>Acheter</h3>
+              <a href="">Cartes cadeaux</a>
+              <a href="">Plan du site</a>
+          </div>
+          <div class="blocFooter">
+              <h3>A Propos</h3>
+              <a href="">Presse</a>
+              <a href="">Conditions de vente</a>
+              
+          </div>
+          <div class="blocFooter">
+              <h3>Aide</h3>
+              <a href="">Centre d'aide</a>
+              <a href="">Paramètres de confidentialité</a>
+          </div>
+      </div>    
+  </footer>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="js/produit.js"></script>
     <script src="js/productManager.js"></script>
     <script src="js/cart.js"></script>
+
 </body>
 </html>
 

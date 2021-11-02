@@ -2,7 +2,6 @@
 
 const API_URL = "http://localhost:3000/api/cameras";
 const productContainer= document.querySelector(".productDetail");
-console.log(productContainer)
 
 // Je récupère mon url//
 let currentUrl = window.location.search;
@@ -18,7 +17,9 @@ fetch(`${API_URL}/${id}`)
     .then(data => {
         if(data.ok){  
         return data.json();
-     }  
+        }else{
+            throw new Error(`Erreur HTTP ! statut : ${data.status}`)
+        }  
     })
     .then(productInfo => {
         
@@ -30,7 +31,6 @@ fetch(`${API_URL}/${id}`)
             price: productInfo.price,
             lenses: productInfo.lenses
         }
-
         return product;
     })
     .then(product => {
@@ -54,22 +54,20 @@ fetch(`${API_URL}/${id}`)
     })
     .catch(err => {
         productContainer.innerHTML= 
-        `<div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading">Ooops!</h4>
-        <p>Je ne trouve pas la page</p>
-        <hr>
-        <p class="mb-0">Recommencer</p>
+        `<div class="alert alert-danger mx-auto" role="alert">
+        <h4 class="alert-heading">Ooops! Il y a eu un problème</h4>
+        <p>Je ${err.message}</p>        
         </div>`
     });
 
+// La fonction setCart s'initialise avec l'événement click//
 
 
-// La fonction setCart s'initialise avec l'event click//
-
-
-function setCart(product){ 
-
-        product.lenses = document.querySelector("#options").value;// j'écrase la valeur de lenses en mettant la sélection de l'utilisateur
+function setCart(product){ //Mise en forme du panier//
+        let valueLense= document.querySelector("#options").value;        
+        let separateValue = valueLense.substr(valueLense.indexOf(" ") + 1); //Je supprime le premier mot du string//       
+        product.lenses = separateValue; //J'obtien ma valeur simplifiée
+        // product.lenses = document.querySelector("#options").value;// j'écrase la valeur de lenses en mettant la sélection de l'utilisateur
         product.quantity = parseInt(document.querySelector("#quantity").value);//je transforme la quantité en integer
 
         let cartContent = getAllObjects();   
@@ -77,13 +75,9 @@ function setCart(product){
         verifyCart(product, cartContent);
 
         saveArticles(cartContent);
-
 };
 
-
-
-function verifyCart(product, cartContent){
-
+function verifyCart(product, cartContent){//Vérification des Id et type de lense pour éviter des répetitions//
     for(let i=0; i < cartContent.length ; i++){
         if(cartContent[i].id === product.id && cartContent[i].lenses === product.lenses){
             cartContent[i].quantity += product.quantity 
@@ -95,22 +89,19 @@ function verifyCart(product, cartContent){
 
 
 
-// avec cette fonction mon code ne marche pas, je dois 'pusher' un product a chaque fois que je click sur lui, et pas seulement
-// lorsque mon panier et vide
+
 
 // function verifyCart(product, cartContent){
-//     if(cartContent.length !== 0){ // si mon panier n'est pas vide
-//         cartContent.forEach((productInCart) => {// je le parcours et je check chacun
-//             if(productInCart.id === product.id){// si un des produits du panier a le même id que le produit que je met dans mon panier
-//                 productInCart.quantity += product.quantity; // alors bingo ! j'ajoute la quantité du produit du panier à la quantité du produit que je veux mettre dans mon panier
-//             }
-//         });
-//     } else {
-//         cartContent.push(product);
-//     }
-//     localStorage.setItem("cart", JSON.stringify(cartContent)); // je mets à jour mon localStorage avec la version à jour du contenu de mon panier
-   
-// };
+    
+//     cartContent.forEach((productInCart) => {// je le parcours et je check chacun
+//         if(productInCart.id === product.id && productInCart.lenses === product.lenses){// si un des produits du panier a le même id que le produit que je met dans mon panier
+//             productInCart.quantity += product.quantity; // alors bingo ! j'ajoute la quantité du produit du panier à la quantité du produit que je veux mettre dans mon panier
+//         }else {
+//             cartContent.push(product);
+//         }
+//     });
+// }; 
+
 
 
 
