@@ -24,11 +24,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <form class="form-inline my-2 my-lg-0 mr-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher un produit">
                     <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                   </form>
                 <ul class="navbar-nav  mt-2 mt-lg-0 ">
-                  <li class="nav-item active"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
+                  <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
                   <li class="nav-item"><a class="nav-link" href="cart.html">Panier</a></li>
                 </ul>                    
             </div>
@@ -42,12 +42,12 @@
               <hr class="gradientLine mx-auto">
             </div>  
             
-            <div class="container-fluid">
+            <div id="tableCart" class="container-fluid">
                 <div class="row d-flex justify-content-center">
                   <div class="col-lg-10 p-4 bg-white rounded shadow-sm mb-5 "> 
 
                     <!-- Shopping cart table -->
-                    <div class="table-responsive">
+                    <div class="table-responsive"> 
                       <table class="table">
                         <thead>  
                               <div class="p-2 px-4 py-3 mb-3 text-uppercase rounded-left border-0 bg-light tableTitle">Tes produits</div>
@@ -69,7 +69,6 @@
                         </tbody>
                       </table>
                     </div>
-
                   </div>
                 </div>
               <!-- End -->
@@ -103,40 +102,45 @@
               <!-- formulaire -->  
               <div class="">
                 <div class="row">                                           
-                  <form class="col-lg-7 mx-auto bg-white rounded shadow-sm mb-5 p-4 " id="formContact">
+                  <form class="col-lg-10 mx-auto bg-white rounded shadow-sm mb-5 p-4 " id="formContact">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold mb-4">Tes coordonnées</div>                    
                     <div class="row mb-4">
                       <div class="col">
                         <div class="form-outline">
-                          <input type="text" id="form6Example1" class="form-control" required/>
-                          <label class="form-label" for="form6Example1">Prenom</label>
+                          <input type="text" id="form6Example1" class="form-control"/>
+                          <label class="form-label" for="form6Example1">Prenom</label><br>
+                          <small></small>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-outline">
-                          <input type="text" id="form6Example2" class="form-control" required/>
-                          <label class="form-label" for="form6Example2">Nom</label>
+                          <input type="text" id="form6Example2" class="form-control"/>
+                          <label class="form-label" for="form6Example2">Nom</label><br>
+                          <small></small>
                         </div>
                       </div>
                     </div>                  
                   
                     <!-- Text input -->
                     <div class="form-outline mb-4">
-                      <input type="text" id="form6Example3" class="form-control" required/>
-                      <label class="form-label" for="form6Example4">Address</label>
+                      <input type="text" id="form6Example3" class="form-control"/>
+                      <label class="form-label" for="form6Example4">Address</label> <br>
+                      <small></small>
                     </div>
 
                     <!-- Text input -->
                     <div class="form-outline mb-4">
-                      <input type="text" id="form6Example4" class="form-control" required/>
-                      <label class="form-label" for="form6Example4">Ville</label>
+                      <input type="text" id="form6Example4" class="form-control"/>
+                      <label class="form-label" for="form6Example4">Ville</label><br>
+                      <small></small>
                     </div>
                   
                     <!-- Email input -->
                     <div class="form-outline mb-4 inputEmail">
-                      <input type="email" id="form6Example5" class="form-control" required/>
-                      <label class="form-label" for="form6Example5">E-mail</label>
+                      <input type="email" id="form6Example5" class="form-control"/>
+                      <label class="form-label" for="form6Example5">E-mail</label><br>
+                      <small></small>                 
                     </div>   
                     
                     <!-- Message input -->
@@ -146,7 +150,7 @@
                     </div>                  
                   
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-dark rounded-pill py-2 btn-block">Commander</button>
+                    <button type="submit" class="btn btn-dark rounded-pill py-2 btn-block mx-auto">Commander</button>
                   </form>
                </div>
               </div>

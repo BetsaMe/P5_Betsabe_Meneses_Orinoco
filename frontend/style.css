@@ -56,6 +56,10 @@ a.nav-link:hover{
   font-weight:bold;
 }
 
+header .form-inline .form-control{
+  width: 350px;
+}
+
 /** Index - Hero Section**/
 #heroSection{
   box-sizing: content-box;
@@ -74,7 +78,7 @@ a.nav-link:hover{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 130px;
+  padding-left: 15%;
   justify-content: center;
 }  
 
@@ -94,7 +98,9 @@ a.nav-link:hover{
   font-weight: 400;
   margin-bottom: 0;
 }
-
+.heroParagraph{
+  font-size: 18px;
+}
 
 .containerTitle > hr{
   height:3px;
@@ -200,6 +206,7 @@ footer img{
 .productDetail{
   display: flex;
   margin: 150px 0 100px;
+  box-shadow: 4px 4px 10px 0 #e8daec;
 }
 
 .productImage{
@@ -287,6 +294,10 @@ article button{
   transform: scale(1.2);
 }
 
+#formContact button{
+  width: 70%;
+  margin: 40px 0;
+}
 
 /* Page confirmation */
 .validationAlert{
@@ -303,6 +314,10 @@ article button{
 .btnContinuer:hover{
   font-weight: 900;
   color: #5837b4;
+}
+
+form label{
+  margin: 0;
 }
 
 /***Media queries***/
@@ -351,6 +366,7 @@ article button{
     font-size: 25px;
   }
   
+  
   .containerTitle > hr{
     width: 300px;
   }
@@ -380,6 +396,10 @@ article button{
   .blocFooter{
     margin-bottom: 20px;
   }
+  header .form-inline .form-control{
+    width: 250px;
+  }
+  
 }
 
 
