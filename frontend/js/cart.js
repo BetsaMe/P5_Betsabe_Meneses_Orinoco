@@ -47,13 +47,13 @@ inputs.forEach(input => {
 
 function modifyInput(e){
     const inputElement= e.target;
-    const closestElement= inputElement.closest(".myProduct");
-    const idProduct = closestElement.dataset.id;
-    const lenseProduct = closestElement.querySelector(".lenses").textContent;     
+    const closestElement= inputElement.closest(".myProduct"); //closestElement correspond au parent de mon element input//
+    const idProduct = closestElement.dataset.id; //idProduct correspond à l'id défini  sur mon parent//
+    const lenseProduct = closestElement.querySelector(".lenses").textContent;   
 
     cart.forEach(product =>{        
-        if(product.id === idProduct && product.lenses === lenseProduct ){ //ici je compare l'id mais aussi le choix de lense//
-            product.quantity = parseInt(inputElement.value)         
+        if(product.id === idProduct && product.lenses === lenseProduct ){ //ici je compare l'id mais aussi le type de lense choisi//
+            product.quantity = parseInt(inputElement.value);         
         }
     })  
     sumCart();
@@ -63,22 +63,21 @@ function modifyInput(e){
 
 //Somme d'éléments dans le panier//
 function sumCart(){
-const subTotal= document.querySelector(".subTotalPrice")
-const Total= document.querySelector(".TotalPrice")
+const subTotal= document.querySelector(".subTotalPrice");
+const Total= document.querySelector(".TotalPrice");
 
 let sum = 0;
     cart.forEach(product=>{
-       let sumItems =  product.price*product.quantity 
-       sum += sumItems       
+       let sumItems =  product.price*product.quantity;
+       sum += sumItems;      
     })
 
     subTotal.innerHTML=`${sum}€`
     Total.innerHTML=`${sum}€`
-}
+};
 
 
 // Supprimer elements dans le panier//
-
 const allDeleteButtons= cartContainer.querySelectorAll(".fa-trash")
 
 allDeleteButtons.forEach(deleteButton =>{
@@ -95,31 +94,33 @@ function removeProduct(e){
         if(cart[i].id===idProduct){
             cart.splice(i,1)
         }              
-     }
-     console.log(cart)
+     }     
      saveArticles(cart)
+     console.log(cart)
 };
 
+
+const myForm= document.getElementById("formContact");
 // Inputs du formulaire//
 const inputName = document.getElementById("form6Example1");
 const inputLastName = document.getElementById("form6Example2");
 const inputAddress = document.getElementById("form6Example3");
 const inputCity = document.getElementById("form6Example4");
 const inputEmail = document.getElementById("form6Example5");
-
+const inputsForm= myForm.querySelectorAll('input');
 
 // Envoyer données du formulaire//
-const myForm= document.getElementById("formContact");
+
 myForm.addEventListener("submit", function(e){  
 
     e.preventDefault(); 
+
     
-    // Vérification des données saisies par l'utilisateur//
-    if (checkInputs() == false){
+    if (checkInputs(inputsForm) == false){
         return;
     }
-    
-    //Création d'object Contact//  
+
+    // Création d'object Contact//  
     const contact={
         firstName: inputName.value,
         lastName: inputLastName.value,
@@ -134,7 +135,7 @@ myForm.addEventListener("submit", function(e){
         let idProduct= productInCart.id;
         products.push(idProduct);
     });
-    console.log(products)
+    
     fetch("http://localhost:3000/api/cameras/order", {
     
     method: "POST",
@@ -145,8 +146,7 @@ myForm.addEventListener("submit", function(e){
     body: JSON.stringify({contact, products})
     
     })
-    .then(function(res){
-        console.log(res)
+    .then(function(res){        
         if (res.ok) {
         return res.json()        
         }
@@ -167,82 +167,110 @@ myForm.addEventListener("submit", function(e){
 });
 
 
-// Vérification des champs vides//
-function checkInputs() { 
+// function checkInputs(myInputs) { //je passe tous les inputs en parametre//
+//     for(let i=0; i < myInputs.length ; i++){
+//         if(myInputs[i].value == ""){  
+//             setError(myInputs[i], 'Veuillez remplir ce champ obligatoire','text-danger' );        
+//             return false;
+//         }        
+//     }
+//     return true;
+// };
 
-    const valueName= inputName.value;
-    const valueLastName= inputLastName.value;
-    const valueAddress= inputAddress.value;
-    const valueCity= inputCity.value;
-    const valueEmail= inputEmail.value;
-    
-    if(valueName == "") {
-        setError(inputName, 'Veuillez remplir ce champ obligatoire');
-        return false;
-    }    
-    if(valueLastName == "") {
-        setError(inputLastName, 'Veuillez remplir ce champ obligatoire');
-        return false;
-    }     
-    if(valueAddress == "") {
-        setError(inputAddress, 'Veuillez remplir ce champ obligatoire');
-        return false;
-    }     
-    if(valueCity == "") {
-        setError(inputCity, 'Veuillez remplir ce champ obligatoire');
-        return false;
-    }
-    if(valueEmail == "") {
-        setError(inputEmail, 'Veuillez remplir ce champ obligatoire');
-        return false;
-    }  
-    return true;
+function checkInputs(myInputs) { //je passe tous les inputs en parametre//
+    var validate = true;
+    myInputs.forEach(function(element) {
+        if (element.value == "") {
+            setError(element, 'Veuillez remplir ce champ obligatoire','text-danger');  
+            validate = false;
+        }
+    });
+    return validate;
 };
 
-// Vérification Format de l'adresse email//
 
-inputEmail.addEventListener("input", function(e){
-    const validFormat= /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+
+// Vérification des champs vides//
+// function checkInputs() { 
+
+//     const valueName= inputName.value;
+//     const valueLastName= inputLastName.value;
+//     const valueAddress= inputAddress.value;
+//     const valueCity= inputCity.value;
+//     const valueEmail= inputEmail.value;
     
-    if (validFormat.test(e.target.value))
+//     if(valueName == "") {
+//         setError(inputName, 'Veuillez remplir ce champ obligatoire');
+//         return false;
+//     }    
+//     if(valueLastName == "") {
+//         setError(inputLastName, 'Veuillez remplir ce champ obligatoire');
+//         return false;
+//     }     
+//     if(valueAddress == "") {
+//         setError(inputAddress, 'Veuillez remplir ce champ obligatoire');
+//         return false;
+//     }     
+//     if(valueCity == "") {
+//         setError(inputCity, 'Veuillez remplir ce champ obligatoire');
+//         return false;
+//     }
+//     if(valueEmail == "") {
+//         setError(inputEmail, 'Veuillez remplir ce champ obligatoire');
+//         return false;
+//     }  
+//     return true;
+// };
+
+// Vérification Format de l'adresse email//
+const validFormatEmail= /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/; 
+const validFormat= /^[a-zA-Z]{3,20}$/; 
+
+inputEmail.addEventListener("input", function(e){      
+    if (validFormatEmail.test(e.target.value))
   {    
-    setSuccess(inputEmail, "Address e-mail valide")
+    setSuccess(inputEmail, "Address e-mail valide", 'text-success')
     
   }else{  
-    setError(inputEmail, "L'adresse e-mail doit être indiquée dans un format approprié.");
+    setError(inputEmail, "L'adresse e-mail doit être indiquée dans un format approprié.",'text-danger');
   }    
 });
 
-// Vérification Format du prenom//
-inputName.addEventListener("input",function(e){
-    const validFormat= /^[a-zA-Z]{3,20}$/;
-    
+// Vérification Format du prenom //
+inputName.addEventListener("input",function(e){ 
     if (validFormat.test(e.target.value))
   {    
-    setSuccess(inputName, "prenom valide")
+    setSuccess(inputName, "Prenom valide", 'text-success')
     
   }else{  
-    setError(inputName, "Votre nom doit comporter entre 3 et 20 caractères");
+    setError(inputName, "Votre prenom doit comporter entre 3 et 20 caractères", 'text-danger');
+  } 
+});
+
+// Vérification Format du nom //
+inputLastName.addEventListener("input",function(e){ 
+    if (validFormat.test(e.target.value))
+  {    
+    setSuccess(inputLastName, "Nom valide", 'text-success')
+    
+  }else{  
+    setError(inputLastName, "Votre nom doit comporter entre 3 et 20 caractères", 'text-danger');
   } 
 });
 
 // Message d'erreur//
-function setError(input, message){
+function setError(input, message, text){
     const inputParent= input.parentElement;
     const messageError= inputParent.querySelector('small');
-    // add error message
     messageError.innerText= message;
-    // add error class
-    messageError.className= 'text-danger';
+    messageError.className= text;
 };
 // Message de success//
-function setSuccess(input, message){
+function setSuccess(input, message, text){
     const inputParent= input.parentElement;
     const messageError= inputParent.querySelector('small');
-    // add success message
     messageError.innerText= message;
-    // add success class
-    messageError.className= 'text-success';
+    messageError.className= text;
 };
 
 

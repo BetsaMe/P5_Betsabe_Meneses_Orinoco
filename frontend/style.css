@@ -205,13 +205,13 @@ footer img{
 /****Page Product****/
 .productDetail{
   display: flex;
-  margin: 150px 0 100px;
-  box-shadow: 4px 4px 10px 0 #e8daec;
+  margin: 150px 0 100px;  
 }
 
 .productImage{
  width: 60%;
-}
+ box-shadow: 4px 4px 10px 0 #e8daec;
+}  
 .productImage > img{ 
   object-fit: cover; 
   height: 500px; 
@@ -227,6 +227,7 @@ footer img{
   width: 40%; 
   height:500px;
   border-radius: 0.25rem;
+  box-shadow: 4px 4px 10px 0 #e8daec;
 }
 article h1{
   font-size: 38px;
@@ -250,7 +251,9 @@ article button{
   max-width: 350px;
   height: 45px;
 }
-
+.alertProductmissing{
+  margin-top: 50px;
+}
 /****Page Cart****/
 
 .titleCart{
@@ -364,8 +367,7 @@ form label{
   }
   .heroSubtitle{
     font-size: 25px;
-  }
-  
+  } 
   
   .containerTitle > hr{
     width: 300px;
@@ -377,6 +379,9 @@ form label{
   .firstBlocFooter{
     width: 100%;
     margin-bottom: 40px;
+  }
+  .productDetail{
+    margin: 90px 0 30px;
   }
   
 
@@ -398,6 +403,14 @@ form label{
   }
   header .form-inline .form-control{
     width: 250px;
+  }
+  
+   .productImage > img{
+     height: 280px; 
+     
+   }
+   .productDetail{
+    margin: 70px 0 20px;
   }
   
 }
