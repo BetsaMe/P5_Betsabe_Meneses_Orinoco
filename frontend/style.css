@@ -62,7 +62,7 @@ header .form-inline .form-control{
 
 /** Index - Hero Section**/
 #heroSection{
-  box-sizing: content-box;
+  box-sizing: content-box; 
   width: 100%;
   height: 100vh;
   background-image: url(images/hero_img.jpg);
@@ -245,11 +245,31 @@ article h6{
 article .quantityStyle{
   margin: 20px 0;
 }
-article button{
-  margin: 0 auto;
+.buttonsCardProduct {  
+  display: flex;
+}
+article .addButton{
   width: 80%;
   max-width: 350px;
   height: 45px;
+}
+article .cartButton{
+  margin-left: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;  
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.fa-shopping-cart {
+  color: #fff;
+}
+.alertProduct{
+  margin-left: 10px;
+  font-size: 14px;
+  color: #39A388;
 }
 .alertProductmissing{
   margin-top: 50px;
@@ -300,6 +320,11 @@ article button{
 #formContact button{
   width: 70%;
   margin: 40px 0;
+}
+
+tbody .linkEmptyCart{
+  color: #6d44df;
+  font-size: 16px;
 }
 
 /* Page confirmation */

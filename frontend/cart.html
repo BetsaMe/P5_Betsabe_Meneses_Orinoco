@@ -14,7 +14,7 @@
 </head>
 <body>   
   <header >
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="images/logoOrinoco-02.svg" alt="" height="45" class="d-inline-block align-text-top">                
@@ -36,7 +36,8 @@
     </nav>       
   </header>       
 
-    <main>      
+    <main>    
+      <section id="cart">  
             <div class="container-fluid py-5 text-center">
               <h1 class="display-4 titleCart">Ton panier</h1>
               <hr class="gradientLine mx-auto">
@@ -53,19 +54,7 @@
                               <div class="p-2 px-4 py-3 mb-3 text-uppercase rounded-left border-0 bg-light tableTitle">Tes produits</div>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row" class="border-0 nameColumn">
-                              <div class="p-2">
-                                <img src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                                <div class="ml-3 d-inline-block align-middle">
-                                  <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
-                                </div>
-                              </div>
-                            </th>
-                            <td class="border-0 align-middle priceColumn"><strong>$79.00</strong></td>
-                            <td class="border-0 align-middle priceColumn"><strong>3</strong></td>
-                            <td class="border-0 align-middle deleteColumn"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                          </tr>                     
+                                           
                         </tbody>
                       </table>
                     </div>
@@ -73,7 +62,7 @@
                 </div>
               <!-- End -->
               <!-- End -->
-              <div class="row d-flex justify-content-center">                
+              <div id="promoContainer" class="row d-flex justify-content-center">                
                 <div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
                   <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Code promotionnel </div>
                   <div class="p-4">
@@ -90,17 +79,17 @@
                   <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Récapitulatif</div>
                   <div class="p-4">
                     <ul class="list-unstyled mb-4">
-                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sous-total</strong><strong class="subTotalPrice">390.00</strong></li>
+                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sous-total</strong><strong class="subTotalPrice"></strong></li>
                       <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Livraison</strong><strong>Gratuite</strong></li>
                       <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                        <h5 class="font-weight-bold TotalPrice">400.00</h5>
+                        <h5 class="font-weight-bold TotalPrice"></h5>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
               <!-- formulaire -->  
-              <div class="">
+              <div id="formContainer">
                 <div class="row">                                           
                   <form class="col-lg-10 mx-auto bg-white rounded shadow-sm mb-5 p-4 " id="formContact">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -150,12 +139,13 @@
                     </div>                  
                   
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-dark rounded-pill py-2 btn-block mx-auto">Commander</button>
+                    <button id="btnSubmit" type="submit" class="btn btn-dark rounded-pill py-2 btn-block mx-auto">Commander</button>
                   </form>
                </div>
               </div>
             </div> 
             <!-- End container-fluid-->
+      </section>      
     </main>
     
     <footer>

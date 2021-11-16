@@ -23,13 +23,15 @@ fetch(`${API_URL}/${id}`)
         }  
     })
     .then(productInfo => {
+
+        let formatedNumber= (productInfo.price/1000);          
         
         let product={        
             id: productInfo._id,
             description: productInfo.description,
             name: productInfo.name,
             image: productInfo.imageUrl,
-            price: productInfo.price,
+            price: formatedNumber,
             lenses: productInfo.lenses
         }
         return product;
@@ -37,7 +39,7 @@ fetch(`${API_URL}/${id}`)
     .then(product => {
 
         document.querySelector(".productName").textContent= product.name;
-        document.querySelector(".productPrice").textContent= product.price;
+        document.querySelector(".productPrice").textContent= (product.price).toLocaleString( undefined,{ minimumFractionDigits: 2 });  
         document.querySelector(".productDescription").textContent= product.description;
         document.querySelector(".productImage").innerHTML= `<img src="${product.image}" alt=""></img>`;        
         
@@ -50,6 +52,8 @@ fetch(`${API_URL}/${id}`)
         document.querySelector("#options").innerHTML= option;
         buttonCart.addEventListener("click", function(){    
             setCart(product); //appel à la fonction pour l'ajout de produits à mon local storage//
+            const addAlert= document.querySelector(".alertProduct");
+            addAlert.textContent= "Ton produit a été ajouté au panier";
         });
 
     })
@@ -65,17 +69,17 @@ fetch(`${API_URL}/${id}`)
 
 
 function setCart(product){ //Mise en forme du panier//
-        let valueLense= document.querySelector("#options").value;        
-        let separateValue = valueLense.substr(valueLense.indexOf(" ") + 1); //Je supprime le premier mot du string//  
-        console.log(separateValue );     
-        product.lenses = separateValue; // j'écrase la valeur de lenses en mettant ma valeur simplifiée 
+        let valueLense= document.querySelector("#options").value;              
+        let formatedValue = valueLense.split(" ").join("-");
+        console.log(formatedValue);
+            
+        product.lenses = formatedValue; // j'écrase la valeur de lenses en mettant ma valeur simplifiée 
         // product.lenses = document.querySelector("#options").value;// j'écrase la valeur de lenses en mettant la sélection de l'utilisateur
         product.quantity = parseInt(document.querySelector("#quantity").value);//je transforme la quantité en integer
 
         let cartContent = getAllObjects();   
 
         verifyCart(product, cartContent);
-
         saveArticles(cartContent);
 };
 

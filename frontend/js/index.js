@@ -13,7 +13,6 @@ fetch(`${API_URL}/`)
     }
 })
 .then(jsonListProducts => {
-
       let cards ="";
       jsonListProducts.forEach(product => {
         cards += `<div class="col-12 col-md-6 col-lg-4 cardContainer">
@@ -21,7 +20,7 @@ fetch(`${API_URL}/`)
                               <img class="card-img-top" src="${product.imageUrl}" alt="Card image cap"width="250">
                               <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
-                                <p class="card-price">${product.price}&nbsp<span>€</span></p>
+                                <p class="card-price">${new Intl.NumberFormat("de-DE", {style: "currency", currency: "EUR"}).format(product.price/1000)}</p>
                                 <div class="lastBloc">
                                   <ul class="list-inline small">
                                     <li class="list-inline-item m-0"><i class="fa fa-star starReview"></i></li>
