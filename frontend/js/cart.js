@@ -122,33 +122,34 @@ const inputsForm= myForm.querySelectorAll('input');
 const validFormatEmail= /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/; 
 const validFormat= /^[a-zA-Z]{3,20}$/; //majuscules et minuscules, entre 3 et 20 lettres//
 const validAdressFormat= /^[#.0-9a-zA-Z\s,-]+$/; //les chiffres, les lettres majuscules et minuscules, les espaces, les tirets et les points//
-const validCityFormat= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/; //lettres, tirests, espaces//
+const validCityFormat= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/; //lettres, tirets, espaces//
 
 function checkInputs (e) { // function à executer avec l'evenement input//
     
 	switch (e.target.id) {
 		case "form6Example1":
-			validationFormat(inputName, validFormat,"Votre prénom doit contenir entre 3 et 20 lettres");
+			validationFormat(inputName, validFormat, "Votre prénom doit contenir entre 3 et 20 lettres");
 		break;
 		case "form6Example2":
-			validationFormat(inputLastName, validFormat,"Votre nom doit contenir entre 3 et 20 lettres");
+			validationFormat(inputLastName, validFormat , "Votre nom doit contenir entre 3 et 20 lettres");
 		break;
 		case "form6Example3":
-			validationFormat(inputAddress, validAdressFormat,"Veuillez saisir une adresse valide");
+			validationFormat(inputAddress, validAdressFormat, "Veuillez saisir une adresse valide");
 		break;
 		case "form6Example4":
-			validationFormat(inputCity, validCityFormat,"Veuillez saisir une ville valide");
+			validationFormat(inputCity, validCityFormat, "Veuillez saisir une ville valide");
 		break;
 		case "form6Example5":
-			validationFormat(inputEmail, validFormatEmail,"L'adresse e-mail doit être indiquée dans un format approprié.");
+			validationFormat(inputEmail, validFormatEmail, "L'adresse e-mail doit être indiquée dans un format approprié");
 		break;
 	}
 };
 
+
 function validationFormat(input, validFormat, message){ 
      
     if(!validFormat.test(input.value)){        
-        setError(input, message,'text-danger');
+        setError(input, message);
         
     }else{
         deleteError(input);
@@ -156,10 +157,8 @@ function validationFormat(input, validFormat, message){
 };
 
 inputsForm.forEach((input) => {
-	input.addEventListener('keyup', checkInputs);
-	input.addEventListener('blur', checkInputs);
+	input.addEventListener('input', checkInputs);
 });
-
 
 
 function checkForm(){ // function de verification pour l'evenement submit//
@@ -233,12 +232,14 @@ myForm.addEventListener("submit", function(e){
 
 
 // Message d'erreur//
-function setError(input, message, text){
+function setError(input, message){
     const inputParent= input.parentElement;
     const messageError= inputParent.querySelector('small');
     messageError.innerText= message;
-    messageError.className= text;
+    messageError.className= "text-danger"; 
 };
+
+
 // Supprimer Message d'erreur//
 function deleteError(input){
     const inputParent= input.parentElement;
@@ -271,3 +272,48 @@ function deleteError(input){
 // checkInputFormat(inputAddress, validAdressFormat,"Veuillez saisir une adresse valide");
 // checkInputFormat(inputCity, validCityFormat,"Veuillez saisir une ville valide");
 // checkInputFormat(inputEmail, validFormatEmail,"L'adresse e-mail doit être indiquée dans un format approprié.",'text-danger'); 
+
+
+
+
+
+
+
+// function checkInputs (e) { // function à executer avec l'evenement input//
+//     if (e.target == inputName){
+//         if(!validFormat.test(inputName.value)){        
+//             setError(inputName, "Votre prénom doit contenir entre 3 et 20 lettres");                
+//         }else{
+//             deleteError(inputName);
+//         }
+//     }
+//     if (e.target == inputLastName){
+//         if(!validFormat.test(inputLastName.value)){        
+//             setError(inputLastName, "Votre nom doit contenir entre 3 et 20 lettres");                
+//         }else{
+//             deleteError(inputLastName);
+//         }
+//     }
+//     if (e.target == inputAddress){
+//         if(!validAdressFormat.test(inputAddress.value)){        
+//             setError(inputAddress, "Veuillez saisir une adresse valide");                
+//         }else{
+//             deleteError(inputAddress);
+//         }
+//     }
+//     if (e.target == inputCity){
+//         if(!validCityFormat.test(inputCity.value)){        
+//             setError(inputCity, "Veuillez saisir une ville valide");                
+//         }else{
+//             deleteError(inputCity);
+//         }
+//     }
+//     if (e.target == inputEmail){
+//         if(!validFormatEmail.test(inputEmail.value)){        
+//             setError(inputEmail, "L'adresse e-mail doit être indiquée dans un format approprié");                
+//         }else{
+//             deleteError(inputEmail);
+//         }
+//     } 
+// };
+
