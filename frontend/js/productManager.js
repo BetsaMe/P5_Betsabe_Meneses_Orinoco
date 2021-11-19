@@ -7,10 +7,10 @@ function getAllObjects(){
     }else{
         return JSON.parse(cartContent);
     }
-}
+};
 
+//Cette fonction permet de sauvegarder le contenu du panier dans le local storage//
 
 function saveArticles(cartContent){
-    localStorage.setItem("cartContent",JSON.stringify(cartContent));
-    
-}
+    localStorage.setItem("cartContent",JSON.stringify(cartContent));    
+};

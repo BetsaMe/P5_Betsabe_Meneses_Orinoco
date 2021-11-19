@@ -6,10 +6,9 @@ const mySubmitButton= document.getElementsByClassName("btnSubmit");
 let cart= getAllObjects();
 
 function renderCart(cart){
-    let content=""; 
     cart.forEach(product => {
         
-        content += `<tr class="myProduct" data-id=${product.id}> 
+        cartContainer.innerHTML += `<tr class="myProduct" data-id=${product.id}> 
             <td scope="row" class="border-0 nameColumn">
                 <div>
                     <a  href="product.html?id=${product.id}"><img src="${product.image}" alt="" width="120" class="img-fluid rounded shadow-sm"></a>                      
@@ -19,14 +18,13 @@ function renderCart(cart){
                     </div>
                 </div>
             </td>
-            <td class="border-0 align-middle priceColumn"><strong class="price">${product.price.toLocaleString( undefined,{ minimumFractionDigits: 2 })}€</strong></td>
+            <td class="border-0 align-middle priceColumn"><strong class="price">${product.price.toLocaleString( 'fr-FR',{ minimumFractionDigits: 2 })}€</strong></td>
             <td class="border-0 align-middle priceColumn">                                         
                 <input type="number" class="inputQuantityCart" name="itemQuantity" min="1" max="100" value="${product.quantity}">                    
             </td>
             <td class="border-0 align-middle trashColumn"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
         </tr>`  
     })
-    cartContainer.innerHTML= content; 
 };
 
 if(cart.length!== 0){ //Si mon panier n'est pas vide//
@@ -36,7 +34,7 @@ if(cart.length!== 0){ //Si mon panier n'est pas vide//
 
 }else{ //Si mon panier est vide//
     
-    cartContainer.innerHTML= 
+    document.querySelector(".table-responsive").innerHTML= 
     `<div class="text-center role="alert">
         <h4 class="text-center">¡Ton panier est vide!</h4>
         <a href="index.html"class="linkEmptyCart">Continuer mes achats</a>           
@@ -82,8 +80,8 @@ let sum = 0;
        sum += sumItems;      
     })
 
-    subTotal.innerHTML=`${sum.toLocaleString( undefined,{ minimumFractionDigits: 2 })}€`
-    Total.innerHTML=`${sum.toLocaleString( undefined,{ minimumFractionDigits: 2 })}€`
+    subTotal.innerHTML=`${sum.toLocaleString( 'fr-FR',{ minimumFractionDigits: 2 })}€`
+    Total.innerHTML=`${sum.toLocaleString( 'fr-FR',{ minimumFractionDigits: 2 })}€`
 };
 
 
@@ -106,15 +104,16 @@ function removeProduct(e){
         }              
      }     
      saveArticles(cart)
+     location.reload();
 };
 
 
 // Inputs du formulaire//
-const inputName = document.getElementById("form6Example1");
-const inputLastName = document.getElementById("form6Example2");
-const inputAddress = document.getElementById("form6Example3");
-const inputCity = document.getElementById("form6Example4");
-const inputEmail = document.getElementById("form6Example5");
+const inputName = document.getElementById("formName");
+const inputLastName = document.getElementById("formLastName");
+const inputAddress = document.getElementById("formAddress");
+const inputCity = document.getElementById("formCity");
+const inputEmail = document.getElementById("formEmail");
 const inputsForm= myForm.querySelectorAll('input');
 
 
@@ -124,35 +123,32 @@ const validFormat= /^[a-zA-Z]{3,20}$/; //majuscules et minuscules, entre 3 et 20
 const validAdressFormat= /^[#.0-9a-zA-Z\s,-]+$/; //les chiffres, les lettres majuscules et minuscules, les espaces, les tirets et les points//
 const validCityFormat= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/; //lettres, tirets, espaces//
 
-function checkInputs (e) { // function à executer avec l'evenement input//
-    
+function checkInputs (e) { // fonction à executer avec l'événement input//    
 	switch (e.target.id) {
-		case "form6Example1":
+		case "formName":
 			validationFormat(inputName, validFormat, "Votre prénom doit contenir entre 3 et 20 lettres");
 		break;
-		case "form6Example2":
+		case "formLastName":
 			validationFormat(inputLastName, validFormat , "Votre nom doit contenir entre 3 et 20 lettres");
 		break;
-		case "form6Example3":
+		case "formAddress":
 			validationFormat(inputAddress, validAdressFormat, "Veuillez saisir une adresse valide");
 		break;
-		case "form6Example4":
+		case "formCity":
 			validationFormat(inputCity, validCityFormat, "Veuillez saisir une ville valide");
 		break;
-		case "form6Example5":
+		case "formEmail":
 			validationFormat(inputEmail, validFormatEmail, "L'adresse e-mail doit être indiquée dans un format approprié");
 		break;
 	}
 };
 
-
 function validationFormat(input, validFormat, message){ 
-     
     if(!validFormat.test(input.value)){        
-        setError(input, message);
+        setMessage(input, message);
         
     }else{
-        deleteError(input);
+        setMessage(input, "");
     }
 };
 
@@ -161,11 +157,11 @@ inputsForm.forEach((input) => {
 });
 
 
-function checkForm(){ // function de verification pour l'evenement submit//
+function checkForm(){ // fonction de vérification pour l'événement submit//
     let validate = true;
     inputsForm.forEach(input=> {
         if (input.value == "") {
-            setError(input, 'Veuillez remplir ce champ obligatoire','text-danger');  
+            setMessage(input, 'Veuillez remplir ce champ obligatoire','text-danger');  
             validate = false;
         }
     });
@@ -231,47 +227,15 @@ myForm.addEventListener("submit", function(e){
 
 
 
-// Message d'erreur//
-function setError(input, message){
-    const inputParent= input.parentElement;
-    const messageError= inputParent.querySelector('small');
-    messageError.innerText= message;
-    messageError.className= "text-danger"; 
+// Message Inputs //
+function setMessage(input, message){
+    const inputParent= input.parentElement.querySelector('small'); 
+    inputParent.innerText= message;
+    inputParent.className= "text-danger"; 
+    if(message = ""){
+        inputParent.removeClass("text-danger"); 
+    }
 };
-
-
-// Supprimer Message d'erreur//
-function deleteError(input){
-    const inputParent= input.parentElement;
-    const messageError= inputParent.querySelector('small');
-    messageError.innerText= "";
-};
-
-
-
-
-
-
-
-
-
-// function checkInputFormat(input, formatValid, message){
-//     input.addEventListener("input", function(e){      
-//         if(!formatValid.test(e.target.value)){        
-//             setError(input, message,'text-danger'); 
-//             // document.getElementById("btnSubmit").setAttribute("disabled", "");  
-//         } else{
-//             deleteError(input);
-//             // document.getElementById("btnSubmit").removeAttribute("disabled"); 
-//         }       
-//     });
-// };
-
-// checkInputFormat(inputName, validFormat,"Votre prénom doit contenir entre 3 et 20 lettres");
-// checkInputFormat(inputLastName, validFormat,"Votre nom doit contenir entre 3 et 20 lettres");
-// checkInputFormat(inputAddress, validAdressFormat,"Veuillez saisir une adresse valide");
-// checkInputFormat(inputCity, validCityFormat,"Veuillez saisir une ville valide");
-// checkInputFormat(inputEmail, validFormatEmail,"L'adresse e-mail doit être indiquée dans un format approprié.",'text-danger'); 
 
 
 

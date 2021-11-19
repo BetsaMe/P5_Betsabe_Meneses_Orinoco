@@ -1,184 +1,187 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orinoco</title>
-    <!-- css styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-</head>
-<body>   
-  <header >
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logoOrinoco-02.svg" alt="" height="45" class="d-inline-block align-text-top">                
-            </a> 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <form class="form-inline my-2 my-lg-0 mr-auto">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher un produit">
-                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                  </form>
-                <ul class="navbar-nav  mt-2 mt-lg-0 ">
-                  <li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Panier</a></li>
-                </ul>                    
-            </div>
-        </div>
-    </nav>       
-  </header>       
-
-    <main>    
-      <section id="cart">  
-            <div class="container-fluid py-5 text-center">
-              <h1 class="display-4 titleCart">Ton panier</h1>
-              <hr class="gradientLine mx-auto">
-            </div>  
-            
-            <div id="tableCart" class="container-fluid">
-                <div class="row d-flex justify-content-center">
-                  <div class="col-lg-10 p-4 bg-white rounded shadow-sm mb-5 "> 
-
-                    <!-- Shopping cart table -->
-                    <div class="table-responsive"> 
-                      <table class="table">
-                        <thead>  
-                              <div class="p-2 px-4 py-3 mb-3 text-uppercase rounded-left border-0 bg-light tableTitle">Tes produits</div>
-                        </thead>
-                        <tbody>
-                                           
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              <!-- End -->
-              <!-- End -->
-              <div id="promoContainer" class="row d-flex justify-content-center">                
-                <div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
-                  <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Code promotionnel </div>
-                  <div class="p-4">
-                    <p class="font-italic mb-5">Si vous disposez d'un code promotionnel, veuillez le saisir dans la case ci-dessous</p>
-                    <div class="input-group mb-4 border rounded-pill p-2">
-                      <input type="text" placeholder="Ajouter un code" aria-describedby="button-addon3" class="form-control border-0">
-                      <div class="input-group-append border-0">
-                        <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Ajouter un code</button>
-                      </div>
-                    </div>
-                  </div>                
-                </div>
-                <div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
-                  <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">Récapitulatif</div>
-                  <div class="p-4">
-                    <ul class="list-unstyled mb-4">
-                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sous-total</strong><strong class="subTotalPrice"></strong></li>
-                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Livraison</strong><strong>Gratuite</strong></li>
-                      <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                        <h5 class="font-weight-bold TotalPrice"></h5>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- formulaire -->  
-              <div id="formContainer">
-                <div class="row">                                           
-                  <form class="col-lg-10 mx-auto bg-white rounded shadow-sm mb-5 p-4 " id="formContact">
-                    <!-- 2 column grid layout with text inputs for the first and last names -->
-                    <div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold mb-4">Tes coordonnées</div>                    
-                    <div class="row mb-4">
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form6Example1" class="form-control"/>
-                          <label class="form-label" for="form6Example1">Prenom</label><br>
-                          <small></small>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-outline">
-                          <input type="text" id="form6Example2" class="form-control"/>
-                          <label class="form-label" for="form6Example2">Nom</label><br>
-                          <small></small>
-                        </div>
-                      </div>
-                    </div>                  
-                  
-                    <!-- Text input -->
-                    <div class="form-outline mb-4">
-                      <input type="text" id="form6Example3" class="form-control"/>
-                      <label class="form-label" for="form6Example4">Address</label> <br>
-                      <small></small>
-                    </div>
-
-                    <!-- Text input -->
-                    <div class="form-outline mb-4">
-                      <input type="text" id="form6Example4" class="form-control"/>
-                      <label class="form-label" for="form6Example4">Ville</label><br>
-                      <small></small>
-                    </div>
-                  
-                    <!-- Email input -->
-                    <div class="form-outline mb-4 inputEmail">
-                      <input type="email" id="form6Example5" class="form-control"/>
-                      <label class="form-label" for="form6Example5">E-mail</label><br>
-                      <small></small>                 
-                    </div>   
-                    
-                    <!-- Message input -->
-                    <div class="form-outline mb-4">
-                      <textarea maxlength="250" class="form-control" id="form6Example6" rows="4"></textarea>
-                      <label class="form-label" for="form6Example7">Information additionnelle</label>
-                    </div>                  
-                  
-                    <!-- Submit button -->
-                    <button id="btnSubmit" type="submit" class="btn btn-dark rounded-pill py-2 btn-block mx-auto">Commander</button>
-                  </form>
-               </div>
-              </div>
-            </div> 
-            <!-- End container-fluid-->
-      </section>      
-    </main>
-    
-    <footer>
-      <div class="container-fluid">
-          <div class="firstBlocFooter">
-              <img src="images/logoOrinoco-03.svg" alt="logo Oricam">                
-          </div>
-          <div class="blocFooter">
-              <h3>Acheter</h3>
-              <a href="">Cartes cadeaux</a>
-              <a href="">Plan du site</a>
-          </div>
-          <div class="blocFooter">
-              <h3>A Propos</h3>
-              <a href="">Presse</a>
-              <a href="">Conditions de vente</a>
-              
-          </div>
-          <div class="blocFooter">
-              <h3>Aide</h3>
-              <a href="">Centre d'aide</a>
-              <a href="">Paramètres de confidentialité</a>
-          </div>
-      </div>    
-  </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="js/produit.js"></script>
-    <script src="js/productManager.js"></script>
-    <script src="js/cart.js"></script>
-
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Orinoco</title>
+		<!-- css styles -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	</head>
+	<body>
+		<header >
+			<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="index.html"><img src="images/logoOrinoco-02.svg" alt="" height="45" class="d-inline-block align-text-top"></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+						<form class="form-inline my-2 my-lg-0 mr-auto">
+							<input class="form-control mr-sm-2" type="search" placeholder="Rechercher un produit">
+							<button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+						</form>
+						<ul class="navbar-nav  mt-2 mt-lg-0 ">
+							<li class="nav-item"><a class="nav-link" aria-current="page" href="index.html">Accueil</a></li>
+							<li class="nav-item"><a class="nav-link" href="cart.html">Panier</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<section id="cart">
+				<div class="container-fluid py-5 text-center">
+					<h1 class="display-4 titleCart">Ton panier</h1>
+					<hr class="gradientLine mx-auto">
+				</div>
+				<div id="tableCart" class="container-fluid">
+					<div class="row d-flex justify-content-center">
+						<div class="col-lg-10 p-4 bg-white rounded shadow-sm mb-5 ">
+							<!-- Shopping cart table -->
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<div class="p-2 px-4 py-3 mb-3 text-uppercase rounded-left border-0 bg-light tableTitle">
+											Tes produits
+										</div>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- End -->
+					<!-- Espace promotion et tableau récapitulatif -->
+					<div id="promoContainer" class="row d-flex justify-content-center">
+						<div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
+							<div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">
+								Code promotionnel 
+							</div>
+							<div class="p-4">
+								<p class="font-italic mb-5">
+									Si vous disposez d'un code promotionnel, veuillez le saisir dans la case ci-dessous
+								</p>
+								<div class="input-group mb-4 border rounded-pill p-2">
+									<input type="text" placeholder="Ajouter un code" aria-describedby="button-addon3" class="form-control border-0">
+									<div class="input-group-append border-0">
+										<button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Ajouter un code</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-5 p-4 bg-white rounded shadow-sm mb-5">
+							<div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold">
+								Récapitulatif
+							</div>
+							<div class="p-4">
+								<ul class="list-unstyled mb-4">
+									<li class="d-flex justify-content-between py-3 border-bottom">
+										<strong class="text-muted">Sous-total</strong>
+										<strong class="subTotalPrice"></strong>
+									</li>
+									<li class="d-flex justify-content-between py-3 border-bottom">
+										<strong class="text-muted">Livraison</strong>
+										<strong>Gratuite</strong>
+									</li>
+									<li class="d-flex justify-content-between py-3 border-bottom">
+										<strong class="text-muted">Total</strong>
+										<h5 class="font-weight-bold TotalPrice"></h5>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+          <!-- End -->
+					<!-- Formulaire -->
+					<div id="formContainer">
+						<div class="row">
+							<form class="col-lg-10 mx-auto bg-white rounded shadow-sm mb-5 p-4 " id="formContact">
+								<!-- 2 column grid layout with text inputs for the first and last names -->
+								<div class="bg-light rounded px-4 py-3 text-uppercase font-weight-bold mb-4">
+									Tes coordonnées
+								</div>
+								<div class="row mb-4">
+									<div class="col">
+										<div class="form-outline">
+											<input type="text" id="formName" class="form-control"/>
+											<label class="form-label" for="formName">Prenom</label>
+											<br>
+											<small></small>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-outline">
+											<input type="text" id="formLastName" class="form-control"/>
+											<label class="form-label" for="formLastName">Nom</label>
+											<br>
+											<small></small>
+										</div>
+									</div>
+								</div>
+								<!-- Text input -->
+								<div class="form-outline mb-4">
+									<input type="text" id="formAddress" class="form-control"/>
+									<label class="form-label" for="formAddress">Address</label>
+									<br>
+									<small></small>
+								</div>
+								<!-- Text input -->
+								<div class="form-outline mb-4">
+									<input type="text" id="formCity" class="form-control"/>
+									<label class="form-label" for="formCity">Ville</label>
+									<br>
+									<small></small>
+								</div>
+								<!-- Email input -->
+								<div class="form-outline mb-4 inputEmail">
+									<input type="email" id="formEmail" class="form-control"/>
+									<label class="form-label" for="formEmail">E-mail</label>
+									<br>
+									<small></small>
+								</div>
+								<!-- Message input -->
+								<div class="form-outline mb-4">
+									<textarea maxlength="250" class="form-control" id="formInfo" rows="4"></textarea>
+									<label class="form-label" for="formInfo">Information additionnelle</label>
+								</div>
+								<!-- Submit button -->
+								<button id="btnSubmit" type="submit" class="btn btn-dark rounded-pill py-2 btn-block mx-auto">Commander</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- End container-fluid-->
+			</section>
+		</main>
+		<footer>
+			<div class="container-fluid">
+				<div class="firstBlocFooter">
+					<img src="images/logoOrinoco-03.svg" alt="logo Oricam">
+				</div>
+				<div class="blocFooter">
+					<h3>Acheter</h3>
+					<a href="">Cartes cadeaux</a>
+					<a href="">Plan du site</a>
+				</div>
+				<div class="blocFooter">
+					<h3>A Propos</h3>
+					<a href="">Presse</a>
+					<a href="">Conditions de vente</a>
+				</div>
+				<div class="blocFooter">
+					<h3>Aide</h3>
+					<a href="">Centre d'aide</a>
+					<a href="">Paramètres de confidentialité</a>
+				</div>
+			</div>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="js/produit.js"></script>
+		<script src="js/productManager.js"></script>
+		<script src="js/cart.js"></script>
+	</body>
 </html>
-
