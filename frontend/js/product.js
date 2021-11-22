@@ -68,7 +68,6 @@ function setCart(product){
         console.log(formatedValue);
             
         product.lenses = formatedValue; // j'écrase la valeur de lenses en mettant ma valeur simplifiée 
-        // product.lenses = document.querySelector("#options").value;// j'écrase la valeur de lenses en mettant la sélection de l'utilisateur
         product.quantity = parseInt(document.querySelector("#quantity").value);//je transforme la quantité en integer
 
         let cartContent = getAllObjects();   

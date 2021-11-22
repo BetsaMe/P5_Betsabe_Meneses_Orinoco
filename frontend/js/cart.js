@@ -123,7 +123,8 @@ const validFormat= /^[a-zA-Z]{3,20}$/; //majuscules et minuscules, entre 3 et 20
 const validAdressFormat= /^[#.0-9a-zA-Z\s,-]+$/; //les chiffres, les lettres majuscules et minuscules, les espaces, les tirets et les points//
 const validCityFormat= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/; //lettres, tirets, espaces//
 
-function checkInputs (e) { // fonction à executer avec l'événement input//    
+// fonction à executer avec l'événement input// 
+function checkInputs (e) {    
 	switch (e.target.id) {
 		case "formName":
 			validationFormat(inputName, validFormat, "Votre prénom doit contenir entre 3 et 20 lettres");
@@ -156,8 +157,8 @@ inputsForm.forEach((input) => {
 	input.addEventListener('input', checkInputs);
 });
 
-
-function checkForm(){ // fonction de vérification pour l'événement submit//
+// fonction de vérification pour l'événement submit//
+function checkForm(){ 
     let validate = true;
     inputsForm.forEach(input=> {
         if (input.value == "") {
@@ -172,6 +173,7 @@ function checkForm(){ // fonction de vérification pour l'événement submit//
     return validate;
 };
 
+//Envoi du formulaire//
 myForm.addEventListener("submit", function(e){  
 
     e.preventDefault();
@@ -227,7 +229,7 @@ myForm.addEventListener("submit", function(e){
 
 
 
-// Message Inputs //
+// Ajouter ou supprimer un message pour chaque input //
 function setMessage(input, message){
     const inputParent= input.parentElement.querySelector('small'); 
     inputParent.innerText= message;
@@ -237,47 +239,4 @@ function setMessage(input, message){
     }
 };
 
-
-
-
-
-
-
-// function checkInputs (e) { // function à executer avec l'evenement input//
-//     if (e.target == inputName){
-//         if(!validFormat.test(inputName.value)){        
-//             setError(inputName, "Votre prénom doit contenir entre 3 et 20 lettres");                
-//         }else{
-//             deleteError(inputName);
-//         }
-//     }
-//     if (e.target == inputLastName){
-//         if(!validFormat.test(inputLastName.value)){        
-//             setError(inputLastName, "Votre nom doit contenir entre 3 et 20 lettres");                
-//         }else{
-//             deleteError(inputLastName);
-//         }
-//     }
-//     if (e.target == inputAddress){
-//         if(!validAdressFormat.test(inputAddress.value)){        
-//             setError(inputAddress, "Veuillez saisir une adresse valide");                
-//         }else{
-//             deleteError(inputAddress);
-//         }
-//     }
-//     if (e.target == inputCity){
-//         if(!validCityFormat.test(inputCity.value)){        
-//             setError(inputCity, "Veuillez saisir une ville valide");                
-//         }else{
-//             deleteError(inputCity);
-//         }
-//     }
-//     if (e.target == inputEmail){
-//         if(!validFormatEmail.test(inputEmail.value)){        
-//             setError(inputEmail, "L'adresse e-mail doit être indiquée dans un format approprié");                
-//         }else{
-//             deleteError(inputEmail);
-//         }
-//     } 
-// };
 

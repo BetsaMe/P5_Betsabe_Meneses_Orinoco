@@ -390,6 +390,9 @@ form label{
   h1{
     font-size: 75px;
   }
+  .cardContainer{
+    margin: 20px 0 70px;
+  }
   .heroSubtitle{
     font-size: 25px;
   } 
@@ -407,14 +410,15 @@ form label{
   }
   .productDetail{
     margin: 90px 0 30px;
-  }
-  
-
+  }  
 }
 @media screen and (max-width: 480px){
   .container-fluid{
     padding: 0 10px;
     margin: 0;
+  }
+  #produits h2{
+    font-size: 45px;
   }
   footer > .container-fluid{
     flex-direction: column;
@@ -422,7 +426,9 @@ form label{
   .containerTitle > hr{   
     width: 250px;
   }
-  
+  .cardContainer{
+    margin: 20px 0;
+  }
   .blocFooter{
     margin-bottom: 20px;
   }
